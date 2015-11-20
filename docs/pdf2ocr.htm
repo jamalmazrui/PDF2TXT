@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="generator" content="pandoc" />
+</head>
+<body>
+<h1 id="pdf2ocr"
+>pdf2ocr</h1
+><p
+>Version 1.2<br
+   />November 12, 2015<br
+   />Copyright 2007 - 2015 by Jamal Mazrui<br
+   />GNU Lesser General Public License (LGPL)</p
+><h2 id="contents"
+>Contents</h2
+><ul
+><li
+  ><a href="#description"
+    >Description</a
+    ></li
+  ><li
+  ><a href="#operation"
+    >Operation</a
+    ></li
+  ><li
+  ><a href="#development-notes"
+    >Development Notes</a
+    ></li
+  ></ul
+><h2 id="description"
+>Description</h2
+><p
+>pdf2ocr (pdf2ocr.exe) is a command line utility under Windows that converts one or more PDF files to text using optical character recognition (OCR). If a PDF includes a text layer, the text can usually be extracted. Some PDFs, however, are image-only -- the result of a scanning process that takes a picture of each page, creating an image of text but not textual characters, themselves. Other PDFs include a text layer but their settings make extracting the text difficult.</p
+><p
+>pdf2ocr uses <a href="https://code.google.com/p/tesseract-ocr/wiki/ReadMe"
+  >Tesseract OCR</a
+  >, which is generally considered to be the best, free, open source OCR at this time.</p
+><h2 id="operation"
+>Operation</h2
+><p
+>The simplest, command-line syntax of pdf2ocr is as follows:<br
+   /><code
+  >pdf2ocr FileSpec</code
+  ></p
+><p
+>FileSpec can refer to either a single PDF or a wildcard specification for batch converting multiple files, e.g.,<br
+   /><code
+  >pdf2ocr c:\temp\*.pdf</code
+  ></p
+><p
+>Each converted file will have the same directory path and root name, differing only in the .txt rather than .pdf extension. The program produces status messages via standard console output.</p
+><p
+>Up to three more parameters may optionally be passed after the file specification: DPI, page segmentation mode, and language code. The default dots per inch (DPI) is 300 for the temporary TIF image that is extracted for each PDF page. The default page segmentation mode is 3 (explained in Tesseract documentation). The default language code is &quot;eng&quot; for English. Text in other languages may be recognized by adding support files from the Tesseract site to the &quot;tessdata&quot; subdirectory of the directory in which pdf2ocr is installed.</p
+><p
+>The FileSpec parameter should be enclosed in quotes if it contains a space character. Here is an example of a command that batch converts a specification with a space at 150 DPI in Spanish:<br
+   /><code
+  >pdf2ocr &quot;c:\temp files\*.pdf&quot; 150 spa</code
+  ></p
+><p
+>A sample, image-only PDF is included for testing pdf2ocr. <code
+  >debate.pdf</code
+  > is a legal agreement on debate rules between U.S. Presidential candidates in 2004.</p
+><p
+>The pdf2ocr distribution may be installed in any directory, e.g., in <code
+  >c:\pdf2ocr</code
+  >. If that directory is added to the Windows search path, pdf2ocr.exe may be run on the command line within any directory.</p
+><h2 id="development-notes"
+>Development Notes</h2
+><p
+>The pdf2ocr.bas file contains the main source code for the program, built with the <a href="http://PowerBASIC.com"
+  >PowerBASIC compiler</a
+  ></p
+><p
+>The <a href="http://QuickPDFLibrary.com"
+  >QuickPDF library</a
+  > is used by the program.</p
+><p
+>Note that these are commercial products needed to successfully compile a new version of the executable. The source code, however, is open and free to share according to the GNU Lesser General Public License (LGPL).</p
+><p
+>I welcome feedback, which helps pdf2ocr improve over time. When reporting a problem, the more specifics, the better, including steps to reproduce the problem if possible.</p
+>
+</body>
+</html>

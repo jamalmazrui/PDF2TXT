@@ -1,0 +1,50 @@
+From: KT Sales [sales@kryltech.com]
+Sent: Friday, September 23, 2005 9:09 PM
+To: Jamal Mazrui
+Subject: Re: SSSuite - License for distributing GetText utility
+
+1. You may distribute GetText for vision impaired and blind people without any
+restrictions, dear Jamal.
+2. Please, look at Subject Search Pad: other blind people ALREADY use this
+product, and have sent us grateful messages.
+http://www.kryltech.com/paddown.htm
+
+3. Look at Subject Search Spider 5.0 we've just released (an hour ago):
+http://www.kryltech.com/spdownld.htm -- yet the page states 4.01, but do not
+pay attention to it: all links already point to version 5.0 installers.
+4. Let me know what else Kryloff Technologies and me, Sergey Kryloff in particular,
+can do for you.
+5. If you can, "grab" the latest filters from SSScanner: yet GetText uses slightly
+old ones ...
+
+PLEASE, USE ONLY THE FORM at
+http://www.kryltech.com/feedback.htm
+to contact us in the future -- do not send
+us any e-mail messages. Otherwise, we
+do not guarantee your message will be
+processed due to a large number of spam
+we receive every day.
+
+Look forward to hearing from you, again.
+Sergey
+-------
+Time: 9/23/2005 4:44:04 PM
+Name: Jamal Mazrui
+Mail: jamal.mazrui@fcc.gov
+Subject: License for distributing GetText utility
+Message: I have developed free software for blind computer users that, among other things, allows them to convert various file
+formats to plain text, which are easier to read with a talking computer system.  I already have developed conversion routines
+for .html, .pdf, .doc, .xls, .ppt, and .rtf files, though the ones for Microsoft Office formats require that suite to be
+installed (the routines use COM automation techniques).
+
+Your GetText utility could add .hlp conversion capability, which would enable users to get plain text access to documentation
+that is distributed in Windows Help format.  Your utility would also allow access to .doc, .xls, .ppt, and .rtf formats when
+Microsoft Office is not installed (though only for Windows 2000 and above, according to your web site).
+
+What would you charge, if anything, for a license to redistribute GetText with my software to strengthen its conversion
+abilities?  The users need not be aware of it working behind the scenes if you don't want them to have direct access to it.
+Alternatively, perhaps you would like them to know about it and for me to include a paragraph about your product in the
+documentation.
+
+Jamal
+

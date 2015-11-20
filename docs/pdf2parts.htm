@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
+
+<html>
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for Windows (vers 25 March 2009), see www.w3.org">
+
+  <title>PDF2Parts</title>
+</head>
+
+<body>
+  Version 1.1<br>
+  November 4, 2015<br>
+  Copyright 2012 - 2015 by Jamal Mazrui<br>
+  GNU Lesser General Public License (LGPL)<br>
+  ----------
+
+  <h1>Contents</h1>
+
+  <ul>
+    <li><a href="#A1">Description</a></li>
+
+    <li><a href="#A2">Installation</a></li>
+
+    <li><a href="#A3">Operation</a></li>
+
+    <li><a href="#A4">Change Log</a></li>
+
+    <li><a href="#A5">Development Notes</a></li>
+  </ul>
+
+  <h2><a name="A1">Description</a></h2>
+
+  <p><a name="A1">PDF2Parts is a free, open source set of utilities for
+  extracting text, images, URLs, metadata, and individual pages from
+  files in Portable Document Format (PDF). The executable,
+  pdf2parts.exe, runs as a 32-bit, console-mode process under Windows.
+  The similarly named library and configuration files, pdf2parts.dll,
+  pdf2parts.tlb, and pdf2parts.ini, are also needed by the program.
+  Other utilities in the distribution extract particular kinds of parts
+  in case only they are needed: pdf2metadata.exe, pdf2pages.exe,
+  pdf2images.exe, pdf2graphics.exe, pdf2text.exe, and
+  pdf2urls.exe.</a></p>
+
+  <h2><a name="A2">Installation</a></h2>
+
+  <p><a name="A2">Unzip the distribution archive, pdf2parts.zip, into
+  its own directory, e.g., to<br>
+  C:\PDF2Parts</a></p>
+
+  <p>Run one of the executables either by referencing its full path or
+  by adding the installation directory to the Windows search path.</p>
+
+  <h2><a name="A3">Operation</a></h2>
+
+  <p><a name="A3">Pass the PDF to be analyzed as a command-line
+  parameter to the executable, e.g.,</a></p>
+
+  <p>pdf2parts.exe Test.pdf</p>
+
+  <p>or</p>
+
+  <p>pdf2parts.exe &quot;C:\Temp Files\Test.pdf&quot;</p>
+
+  <p>Note that the file parameter should b quoted if it contains a
+  space character. Two optional command-line parameters specify the
+  Dots Per Inch (DPI) and format of image files. The default values are
+  150 for DPI and TIFF for format. The DPI number can range from about
+  72 to 300. Possible formats are BMP, EMF, EMF+, EPS, GIF, JPG, PNG,
+  TIFF, and WMF (capitalization does not matter). For example, to
+  produce a a 300 DPI PNG image of each PDF page, the syntax could
+  be<br>
+  pdf2parts.exe test.pdf 300 png</p>
+
+  <p>Two types of image files are produced. An image is created for
+  each PDF page as a whole. In addition, any graphics embedded within
+  the page are extracted. For clarity, these will be called page images
+  and embedded graphics.</p>
+
+  <p>When run, the program prints to the console how many pages are in
+  the PDF, and how many graphics are in each page. Several files
+  containing various parts of the PDF are produced. First, a text file
+  is saved with metadata about the PDF, such as the author, security
+  settings, and whether it is image-only or tagged for accessibility.
+  Then, for each page, an individual PDF, an image, a text file, and
+  embedded graphics are saved. Last, a text file with all text is
+  saved.</p>
+
+  <p>That text version of the PDF has the same file name except for a
+  .txt extension, e.g.,<br>
+  Test.pdf</p>
+
+  <p>becomes<br>
+  Test.txt</p>
+
+  <p>The text file containing settings of meta data is given
+  &quot;_meta&quot; as a suffix, e.g.,<br>
+  Test_meta.txt</p>
+
+  <p>Similarly, the list of URLs extracted is contained in<br>
+  test_urls.txt</p>
+
+  <p>Other output files have a numeric suffix before the file
+  extension. The suffix begins with an underline character, followed by
+  the page number. The page number is right justified with leading 0s
+  so that file names sort properly in a directory listing.</p>
+
+  <p>Thus, the text version of page 1 would be<br>
+  Test_01.txt</p>
+
+  <p>The PDF version would be<br>
+  test_01.pdf</p>
+
+  <p>and the image version would be<br>
+  Test_01.tif</p>
+
+  <p>Any graphics embedded in the page are saved to separate files with
+  a longer suffix that includes the sequential number of the image on
+  the page. A dash precedes the image number. For example, if the
+  second graphic on page 1 is in BMP format, its corresponding file
+  would be<br>
+  Test_01-2.bmp</p>
+
+  <p>Each utility may be run without command-line parameters to be
+  reminded of its syntax. The Batch file RunMulti.bat enables a utility
+  to be run against multiple PDF files meeting a wildcard
+  specification. The first parameter is the utility name and the second
+  parameter is the wildcard specification, e.g.,<br>
+  RunMulti pdf2text C:\temp\*.pdf<br>
+  (Note that pdf2text.exe only creates a text version of the whole PDF
+  whereas pdf2parts.exe also creates one for each individual page.)</p>
+
+  <h2><a name="A4">Change Log</a></h2>
+
+  <p><a name="A4">Beta 0.9 on January 27, 2012<br>
+  Initial public beta.</a></p>
+
+  <p>Beta 0.95 on January 29, 2012<br>
+  Changed program name from PDF2Images to PDF2Parts, since text files
+  are now also produced as output. There are a text file with metadata,
+  a text file for each page, and a text file with all text. In addition
+  to an image file produced for each component image of a page, an
+  image file is also produced for the page as a whole.</p>
+
+  <p>Beta 0.98 on February 3, 2012<br>
+  Used a registration-free COM technique rather than calling a Win32
+  DLL in order to avoid memory errors when extracting text from PDFs
+  that are not small in size.</p>
+
+  <p>Version 1.0 on November 3, 2015<br>
+  Added Tagged status to PDF metadata. Added pdf2urls.exe utility.
+  Added RunMulti batch file. Uploaded project as a GitHub repository
+  at<br>
+  <a href=
+  "https://github.com/JamalMazrui/pdf2parts">https://github.com/JamalMazrui/pdf2parts</a></p>
+
+  <p>Version 1.1 on November 4, 2015<br>
+  Obtained Tagged status via the QuickPDF library, thereby eliminating
+  need for external pdfinfo.exe utility. Revised pdf2text.exe so that
+  only a text file of the whole PDF is created. Thus RunMulti.bat can
+  generate a text file for each PDF matching a wildcard specification,
+  e.g., those in a directory.</p>
+
+  <h2><a name="A5">Development Notes</a></h2>
+
+  <p><a name="A5">The latest version of PDF2Parts is available
+  at<br></a><a href=
+  "http://EmpowermentZone.com/pdf2parts.zip">http://EmpowermentZone.com/pdf2parts.zip</a></p>
+
+  <p>This documentation is also directly available online at<br>
+  <a href=
+  "http://EmpowermentZone.com/pdf2parts.htm">http://EmpowermentZone.com/pdf2parts.htm</a></p>
+
+  <p>The *.bas files contain the main source code for the program,
+  built with the PowerBASIC compiler from<br>
+  <a href="http://PowerBASIC.com">http://PowerBASIC.com</a></p>
+
+  <p>The QuickPDF library is used by the program, available from<br>
+  <a href=
+  "http://QuickPDFLibrary.com">http://QuickPDFLibrary.com</a></p>
+
+  <p>Note that these are commercial products needed to successfully
+  compile new versions of the executables. Their source code, however,
+  is open and free to share according to the GNU Lesser General Public
+  License (LGPL). Batch and include files needed for development of
+  PDF2Parts are also contained in the distribution. The win2con.exe
+  utility was used to convert each executable from a Windows to console
+  mode binary.</p>
+
+  <p>I welcome feedback, which helps PDF2PARTS improve over time. When
+  reporting a problem, the more specifics, the better, including steps
+  to reproduce it if possible.</p>
+</body>
+</html>

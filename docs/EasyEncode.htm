@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
+
+<html>
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for Windows (vers 25 March 2009), see www.w3.org">
+
+  <title>EasyEncode</title>
+</head>
+
+<body>
+  Version 1.1<br>
+  September 13, 2015<br>
+  Copyright 2011 - 2015 by Jamal Mazrui<br>
+  GNU Lesser General Public License (LGPL)
+
+  <p>----------</p>
+
+  <h1>Contents</h1>
+
+  <ul>
+    <li><a href="#A1">Description</a></li>
+
+    <li><a href="#A2">Operation</a></li>
+
+    <li><a href="#A3">Installation</a></li>
+
+    <li><a href="#A4">Change Log</a></li>
+
+    <li><a href="#A5">Development Notes</a></li>
+  </ul>
+
+  <h2><a name="A1">Description</a></h2>
+
+  <p><a name="A1">EasyEncode is a set of free, open source command-line
+  utilities for detecting and converting file encodings among common
+  formats, operating under Windows. Each utility operates as a
+  stand-alone executable in console mode, without a graphical user
+  interface (GUI). Four encodings are supported, accounting for most
+  encodings in use today: UTF-16, UTF-8 with a byte order mark (BOM),
+  UTF-8 without a BOM, and ANSI.</a></p>
+
+  <p>Character encodings are a complex subject. EasyEncode does not
+  eliminate a developer&#39;s need for knowledge in this area, but once
+  encodings are understood conceptually, the software eases work with
+  them. The utilities may be used either manually at the command line,
+  or programmatically by applications that call them as needed.</p>
+
+  <p>EasyEncode uses abbreviated names for encodings in lower case
+  without hyphens. They are further explained as follows:</p>
+
+  <p>ansi = an encoding where each of an ordered set of 256 characters
+  is represented by a single byte, having an ordinal value between 0
+  and 255, inclusive. The first 128 characters, between 0 and 127, are
+  the standard ASCII character set, consisting of English letters,
+  numbers, punctuation symbols, and control characters. The 128
+  characters in the upper half of ansi, between 128 and 255, are other
+  symbols such as the copyright symbol and Greek mathematical symbols.
+  The upper half of ansi varies depending on the default language of
+  the computer, so is different, for example, in Russian than
+  English.</p>
+
+  <p>utf16 = a multibyte encoding for the Unicode character set, which
+  is a standard ordering of over a million characters, representing
+  virtually every natural and specialized language in the world. The
+  first 128 characters of Unicode are the same as ASCII. utf16 is an
+  encoding that generally uses two bytes to represent each Unicode
+  character, though more bytes may be used.</p>
+
+  <p>utf8b = a different encoding for the same Unicode character set.
+  The first 128 characters of utf8 are the same single-byte
+  representations as ASCII. Characters with higher ordinal values
+  require two or three bytes to be encoded. There are two versions of
+  utf8: utf8b and utf8n. A byte order mark (BOM) is a sequence of a few
+  bytes at the beginning of a file which serves as a signature
+  indicating the encoding of characters in the rest of the file. utf8b
+  uses a BOM, whereas utf8n does not. Besides an initial BOM, a utf8b
+  and utf8n represent file content identically.</p>
+
+  <p>utf8n = UTF8 encoding without a BOM, as explained above. This has
+  become the default encoding on the Linux and Mac operating systems.
+  In Windows, there is no single, default encoding. The console mode
+  environment uses ansi by default; API and COM calls typically use
+  utf16; XML and other files often use utf8b. Since there is no single
+  default, Microsoft recommends the explicit use of a BOM with either
+  utf16 or utf8. For utf16, a BOM is required, whereas for utf8, it is
+  optional. Thus utf8 encoding on Windows generally includes a BOM
+  whereas on other platforms, it does not. Increasingly, software on
+  other platforms ignores a BOM, but some common applications till are
+  confused by a BOM, since these initial bytes of a file do not
+  represent valid Unicode characters, themselves.</p>
+
+  <h2><a name="A2">Operation</a></h2>
+
+  <p><a name="A2">The syntax is the same for the five EasyEncode
+  utilities: enc.exe, utf16.exe, utf8b.exe, utf8n.exe, and
+  ansi.exe:</a></p>
+
+  <p>util.exe FilePath</p>
+
+  <p>where util.exe is one of the above executables and FilePath is a
+  sufficient path and name of the file to process. Each utility has a
+  single purpose indicated by its file name:</p>
+
+  <p>enc.exe = detect and report the encoding of the file.</p>
+
+  <p>utf16.exe = convert file to utf16 encoding. Doing this involves
+  detecting the current encoding first, so that characters are properly
+  recognized before being mapped to a different encoding. No conversion
+  is attempted if the current encoding fails to be detected, or if it
+  is detected to be the same as the desired encoding.</p>
+
+  <p>utf8b.exe = convert file to utf8b encoding.</p>
+
+  <p>utf8n.exe = convert file to utf8n encoding. This might be used,
+  for example, to prepare a file for a cross-platform application that
+  expects utf8n encoding of all input.</p>
+
+  <p>ansi.exe = convert file to ansi encoding. Note that this may lose
+  characters that are not represented in the 256-character set of
+  ansi.</p>
+
+  <p>In addition to the 32-bit executables mentioned above, EasyEncode
+  now includes 64-bit versions with the same file names except for a
+  &quot;64&quot; suffix after the root name of each file, i.e.,
+  ansi64.exe, enc64.exe, utf1664.exe, utf8b64.exe, and utf8n64.exe.</p>
+
+  <p>In the conversion utilities, the original file is replaced if the
+  desired encoding is different from the current one, which must be
+  detectable. The automatic detection is extremely accurate, but not
+  perfect. In rare cases, the actual encoding of a file may not be
+  properly detected.</p>
+
+  <p>When a path contains a space character, the path should be
+  enclosed in quotation marks (a standard Windows convention).</p>
+
+  <p>Installation</p>
+
+  <p>Unzip the archive at the web address<br>
+  <a href=
+  "http://EmpowermentZone.com/EasyEncode.zip">http://EmpowermentZone.com/EasyEncode.zip</a></p>
+
+  <p>e.g., to the directory<br>
+  C:\EasyEncode</p>
+
+  <p>Then run one of the utilities, passing a file path as a
+  command-line parameter. If no parameter is passed, a simple help
+  message is displayed.</p>
+
+  <p>The utilities may be run from any directory. To do so without
+  specifying the full path of a utility, add the EasyEncode directory
+  to the Windows search path.</p>
+
+  <p>This documentation is also separately available online at<br>
+  <a href=
+  "http://EmpowermentZone.com/EasyEncode.htm">http://EmpowermentZone.com/EasyEncode.htm</a></p>
+
+  <h2><a name="A4">Change Log</a></h2>
+
+  <p><a name="A4">Version 1.1 on September 13, 2015<br>
+  Recompiled the utilities with the latest version of AutoIt and added
+  64-bit versions.</a></p>
+
+  <p>Version 1.0 on November 10,2011<br>
+  Official release.</p>
+
+  <p>Version 0.9 on November 6,2011<br>
+  Initial public beta.</p>
+
+  <h2><a name="A5">Development Notes</a></h2>
+
+  <p><a name="A5">EasyEncode is written in the AutoIT scripting
+  language, available from<br></a><a href=
+  "http://AutoITScript.com">http://AutoITScript.com</a></p>
+
+  <p>commented source code is in text files with a .au3 extension.
+  Batch files are included to recompile the utilities, assuming the
+  default installation of the AutoIT development package.</p>
+
+  <p>I welcome feedback, which will help EasyEncode improve over time.
+  When reporting a problem, please be as specific as possible about
+  Windows version and steps to reproduce the problem.</p>
+
+  <p>Jamal Mazrui<br>
+  <a href=
+  "mailto:jamal@empowermentzone.com">jamal@empowermentzone.com</a></p>
+</body>
+</html>
